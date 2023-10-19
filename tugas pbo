@@ -1,0 +1,140 @@
+using System;
+
+public class Laptop
+{
+    public string Merk { get; set; }
+    public string Tipe { get; set; }
+
+    public void LaptopDinyalakan()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} menyala");
+    }
+
+    public void LaptopDimatikan()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} mati");
+    }
+
+    public void BermainGame()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} sedang memainkan game");
+    }
+
+    public void Ngoding()
+    {
+        Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+    }
+}
+
+public class Vivobook : Laptop
+{
+    public Nvidia Vga { get; set; }
+    public Corei5 Processor { get; set; }
+}
+
+public class IdeaPad : Laptop
+{
+    public AMD Vga { get; set; }
+    public Ryzen Processor { get; set; }
+}
+
+public class Nvidia
+{
+    public override string ToString()
+    {
+        return "Nvidia";
+    }
+}
+
+public class AMD
+{
+    public override string ToString()
+    {
+        return "AMD";
+    }
+}
+
+public class Corei5
+{
+    public override string ToString()
+    {
+        return "Core i5";
+    }
+}
+
+public class Ryzen
+{
+    public override string ToString()
+    {
+        return "Ryzen";
+    }
+}
+
+public class Predator : Laptop
+{
+    public AMD Vga { get; set; }
+    public Corei7 Processor { get; set; }
+}
+
+public class Corei7
+{
+    public override string ToString()
+    {
+        return "Core i7";
+    }
+}
+
+public class ACER : Laptop
+{
+    public new void BermainGame()
+    {
+        Console.WriteLine($"Laptop ACER {Merk} {Tipe} sedang memainkan game dengan kecepatan tinggi!");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Vivobook laptop1 = new Vivobook();
+        laptop1.Merk = "Vivobook";
+        laptop1.Tipe = "ModelX";
+        laptop1.Vga = new Nvidia();
+        laptop1.Processor = new Corei5();
+
+        IdeaPad laptop2 = new IdeaPad();
+        laptop2.Merk = "IdeaPad";
+        laptop2.Tipe = "ModelY";
+        laptop2.Vga = new AMD();
+        laptop2.Processor = new Ryzen();
+
+        Predator predator = new Predator();
+        predator.Merk = "Predator";
+        predator.Tipe = "ModelZ";
+        predator.Vga = new AMD();
+        predator.Processor = new Corei7();
+
+        ACER acer = new ACER();
+        acer.Merk = "Predator";
+        acer.Tipe = "ModelZ";
+        acer.Vga = new AMD();
+        acer.Processor = new Corei7();
+
+        laptop1.LaptopDinyalakan();
+        laptop1.BermainGame();
+        laptop1.Ngoding();
+        laptop1.LaptopDimatikan();
+
+        laptop2.LaptopDinyalakan();
+        laptop2.BermainGame();
+        laptop2.Ngoding();
+        laptop2.LaptopDimatikan();
+
+        predator.LaptopDinyalakan();
+        predator.BermainGame();
+        predator.Ngoding();
+        predator.LaptopDimatikan();
+
+        acer.BermainGame();
+    }
+}
